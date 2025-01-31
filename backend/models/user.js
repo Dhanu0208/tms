@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { dbConnection } from "../utils/db.js";
+import { dbConnection } from "../utils/index.js";
 
 // Function to create a new user
 export const createUser = async ({
