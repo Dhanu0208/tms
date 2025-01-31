@@ -1,15 +1,15 @@
 export const summary = {
-  totaltickets: 10,
-  last10Task: [
+  totalTickets: 10,
+  last10Ticket: [
     {
       _id: "65c5f12ab5204a81bde866a9",
-      title: "Test task",
+      title: "Test Ticket",
       date: "2024-02-09T00:00:00.000Z",
       priority: "high",
       stage: "todo",
       assets: [
-        "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707471138863original-a005132062ca5bafc505c4c74f0e1865.jpg?alt=media&token=55f909f2-7f05-42f3-af4f-dc7f87cdea1d",
-        "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707471144712PsZch9E1_400x400.jpg?alt=media&token=7ce62c7e-c240-4032-83c6-bb6c9cdc0d4b",
+        "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707471138863original-a005132062ca5bafc505c4c74f0e1865.jpg?alt=media&token=55f909f2-7f05-42f3-af4f-dc7f87cdea1d",
+        "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707471144712PsZch9E1_400x400.jpg?alt=media&token=7ce62c7e-c240-4032-83c6-bb6c9cdc0d4b",
       ],
       team: [
         {
@@ -36,9 +36,9 @@ export const summary = {
       ],
       isTrashed: false,
       activities: [],
-      subtickets: [
+      subTickets: [
         {
-          title: "Task manager youtube tutorial",
+          title: "Ticket manager youtube tutorial",
           date: "2024-02-09T00:00:00.000Z",
           tag: "tutorial",
           _id: "65c5f153b5204a81bde866c8",
@@ -95,7 +95,7 @@ export const summary = {
           _id: "65c5f1abb5204a81bde866eb",
         },
       ],
-      subtickets: [
+      subTickets: [
         {
           title: "Blog App Admin Dashboard",
           date: "2024-02-08T00:00:00.000Z",
@@ -114,9 +114,9 @@ export const summary = {
       priority: "high",
       stage: "todo",
       assets: [
-        "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707410130023hand-holding-writing-checklist-application-form-document-clipboard-white-background-3d-illustration.jpg?alt=media&token=08de4848-517f-48ca-a9b4-624744d5ddb0",
-        "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412301523image_processing20220706-26930-ktfgon.png?alt=media&token=6cd185c1-9fc3-4f52-bb0b-0d4a29e65b85",
-        "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412306237image_processing20220706-11953-1f826f4.png?alt=media&token=7270475f-a994-41fd-8ae6-62e00f72b0b3",
+        "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707410130023hand-holding-writing-checklist-application-form-document-clipboard-white-background-3d-illustration.jpg?alt=media&token=08de4848-517f-48ca-a9b4-624744d5ddb0",
+        "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412301523image_processing20220706-26930-ktfgon.png?alt=media&token=6cd185c1-9fc3-4f52-bb0b-0d4a29e65b85",
+        "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412306237image_processing20220706-11953-1f826f4.png?alt=media&token=7270475f-a994-41fd-8ae6-62e00f72b0b3",
       ],
       team: [
         {
@@ -172,7 +172,7 @@ export const summary = {
           _id: "65c51af08064df97d208b3b0",
         },
       ],
-      subtickets: [
+      subTickets: [
         {
           title: "Blog App Dashboard",
           date: "2024-02-06T00:00:00.000Z",
@@ -192,13 +192,13 @@ export const summary = {
     },
     {
       _id: "65c45fb6af6ec0118be94052",
-      title: "Task Manager Youtube Video",
+      title: "Ticket Manager Youtube Video",
       date: "2024-02-11T00:00:00.000Z",
       priority: "medium",
       stage: "completed",
       assets: [
-        "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412043078report.jpg?alt=media&token=41d02b42-c25c-4fbb-90a9-340a45f4bbe1",
-        "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412052287hand-holding-writing-checklist-application-form-document-clipboard-white-background-3d-illustration.jpg?alt=media&token=98b360b4-954c-47e3-8283-8228a54a327c",
+        "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412043078report.jpg?alt=media&token=41d02b42-c25c-4fbb-90a9-340a45f4bbe1",
+        "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412052287hand-holding-writing-checklist-application-form-document-clipboard-white-background-3d-illustration.jpg?alt=media&token=98b360b4-954c-47e3-8283-8228a54a327c",
       ],
       team: [
         {
@@ -226,7 +226,7 @@ export const summary = {
           _id: "65c51b998064df97d208b3f9",
         },
       ],
-      subtickets: [
+      subTickets: [
         {
           title: "Blog App Admin Dashboard",
           date: "2024-02-08T00:00:00.000Z",
@@ -245,11 +245,11 @@ export const summary = {
       priority: "high",
       stage: "todo",
       assets: [
-        "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412457946Wed%20Dev%20Course.png?alt=media&token=028416bf-88c6-4738-9a5a-d90e6d53b202",
-        "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412466672original-380755132e03e80a9fa3ef1203219cf3.png?alt=media&token=10d96b0d-feea-4627-aa1e-9b8f87cf7500",
-        "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412469358original-a738b8d0cbced29ae8609072d006fbcb.jpg?alt=media&token=9a6cc56f-63ff-4405-b978-d962c3c1f1d0",
-        "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412472346cosial.png?alt=media&token=b6e427b3-bc36-4fa2-a8f9-438f9ebf93e2",
-        "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412478590original-a005132062ca5bafc505c4c74f0e1865.jpg?alt=media&token=e81047bd-a1e2-49e5-85f5-feda31c423f2",
+        "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412457946Wed%20Dev%20Course.png?alt=media&token=028416bf-88c6-4738-9a5a-d90e6d53b202",
+        "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412466672original-380755132e03e80a9fa3ef1203219cf3.png?alt=media&token=10d96b0d-feea-4627-aa1e-9b8f87cf7500",
+        "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412469358original-a738b8d0cbced29ae8609072d006fbcb.jpg?alt=media&token=9a6cc56f-63ff-4405-b978-d962c3c1f1d0",
+        "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412472346cosial.png?alt=media&token=b6e427b3-bc36-4fa2-a8f9-438f9ebf93e2",
+        "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412478590original-a005132062ca5bafc505c4c74f0e1865.jpg?alt=media&token=e81047bd-a1e2-49e5-85f5-feda31c423f2",
       ],
       team: [
         {
@@ -284,7 +284,7 @@ export const summary = {
           _id: "65c51b678064df97d208b3d6",
         },
       ],
-      subtickets: [
+      subTickets: [
         {
           title: "Check Login code and fix bugs asap",
           date: "2024-02-08T00:00:00.000Z",
@@ -328,7 +328,7 @@ export const summary = {
       ],
       isTrashed: false,
       activities: [],
-      subtickets: [
+      subTickets: [
         {
           title: "Blog App Dashboard",
           date: "2024-02-06T00:00:00.000Z",
@@ -371,7 +371,7 @@ export const summary = {
       ],
       isTrashed: false,
       activities: [],
-      subtickets: [
+      subTickets: [
         {
           title: "Blog App Admin Dashboard",
           date: "2024-02-08T00:00:00.000Z",
@@ -415,7 +415,7 @@ export const summary = {
       ],
       isTrashed: false,
       activities: [],
-      subtickets: [
+      subTickets: [
         {
           title: "Blog App Dashboard",
           date: "2024-02-06T00:00:00.000Z",
@@ -458,7 +458,7 @@ export const summary = {
       ],
       isTrashed: false,
       activities: [],
-      subtickets: [
+      subTickets: [
         {
           title: "Blog App Admin Dashboard",
           date: "2024-02-08T00:00:00.000Z",
@@ -502,7 +502,7 @@ export const summary = {
       ],
       isTrashed: false,
       activities: [],
-      subtickets: [
+      subTickets: [
         {
           title: "Blog App Dashboard",
           date: "2024-02-06T00:00:00.000Z",
@@ -563,7 +563,7 @@ export const summary = {
       isActive: true,
     },
   ],
-  tickets: {
+  Tickets: {
     todo: 6,
     "in progress": 3,
     completed: 1,
@@ -590,196 +590,196 @@ export const chartData = [
 ];
 
 export const tickets = [
-  {
-    _id: "65c5f12ab5204a81bde866a9",
-    title: "Test task",
-    date: "2024-02-09T00:00:00.000Z",
-    priority: "high",
-    stage: "todo",
-    assets: [
-      "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707471138863original-a005132062ca5bafc505c4c74f0e1865.jpg?alt=media&token=55f909f2-7f05-42f3-af4f-dc7f87cdea1d",
-      "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707471144712PsZch9E1_400x400.jpg?alt=media&token=7ce62c7e-c240-4032-83c6-bb6c9cdc0d4b",
-    ],
-    team: [
-      {
-        _id: "65c202d4aa62f32ffd1303cc",
-        name: "Codewave Asante",
-        title: "Administrator",
-        email: "admin@gmail.com",
-      },
-      {
-        _id: "65c30b96e639681a13def0b5",
-        name: "Jane Smith",
-        title: "Product Manager",
-        email: "jane.smith@example.com",
-      },
-      {
-        _id: "65c317360fd860f958baa08e",
-        name: "Alex Johnson",
-        title: "UX Designer",
-        email: "alex.johnson@example.com",
-      },
-    ],
-    isTrashed: false,
-    activities: [],
-    subtickets: [
-      {
-        title: "Task manager youtube tutorial",
-        date: "2024-02-09T00:00:00.000Z",
-        tag: "tutorial",
-        _id: "65c5f153b5204a81bde866c8",
-      },
-    ],
-    createdAt: "2024-02-09T09:32:26.574Z",
-    updatedAt: "2024-02-09T09:36:53.339Z",
-    __v: 1,
-  },
-  {
-    _id: "65c5d547660756f6fd453a7a",
-    title: "Duplicate - Duplicate - Review Code Changes",
-    date: "2024-02-09T00:00:00.000Z",
-    priority: "medium",
-    stage: "in progress",
-    assets: [],
-    team: [
-      {
-        _id: "65c317360fd860f958baa08e",
-        name: "Alex Johnson",
-        title: "UX Designer",
-        email: "alex.johnson@example.com",
-      },
-      {
-        _id: "65c3176a0fd860f958baa099",
-        name: "Emily Wilson",
-        title: "Data Analyst",
-        email: "emily.wilson@example.com",
-      },
-    ],
-    isTrashed: false,
-    activities: [
-      {
-        type: "started",
-        activity: "Project started",
-        date: "2024-02-09T09:16:56.623Z",
-        by: "65c202d4aa62f32ffd1303cc",
-        _id: "65c5f18bb5204a81bde866d1",
-      },
-      {
-        type: "commented",
-        activity: "i like coding!!",
-        date: "2024-02-09T09:16:56.623Z",
-        by: "65c202d4aa62f32ffd1303cc",
-        _id: "65c5f19eb5204a81bde866dd",
-      },
-      {
-        type: "bug",
-        activity: "bug found",
-        date: "2024-02-09T09:16:56.623Z",
-        by: "65c202d4aa62f32ffd1303cc",
-        _id: "65c5f1abb5204a81bde866eb",
-      },
-    ],
-    subtickets: [
-      {
-        title: "Blog App Admin Dashboard",
-        date: "2024-02-08T00:00:00.000Z",
-        tag: "Website App",
-        _id: "65c3535476ed5c48f9440973",
-      },
-    ],
-    createdAt: "2024-02-09T07:33:27.590Z",
-    updatedAt: "2024-02-09T09:36:10.386Z",
-    __v: 4,
-  },
-  {
-    _id: "65c46026af6ec0118be9407a",
-    title: "Website Project Proposal Review",
-    date: "2024-02-07T00:00:00.000Z",
-    priority: "high",
-    stage: "todo",
-    assets: [
-      "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707410130023hand-holding-writing-checklist-application-form-document-clipboard-white-background-3d-illustration.jpg?alt=media&token=08de4848-517f-48ca-a9b4-624744d5ddb0",
-      "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412301523image_processing20220706-26930-ktfgon.png?alt=media&token=6cd185c1-9fc3-4f52-bb0b-0d4a29e65b85",
-      "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412306237image_processing20220706-11953-1f826f4.png?alt=media&token=7270475f-a994-41fd-8ae6-62e00f72b0b3",
-    ],
-    team: [
-      {
-        _id: "65c202d4aa62f32ffd1303cc",
-        name: "Codewave Asante",
-        title: "Administrator",
-        email: "admin@gmail.com",
-      },
-      {
-        _id: "65c27a0e18c0a1b750ad5cad",
-        name: "John Doe",
-        title: "Software Engineer",
-        email: "john.doe@example.com",
-      },
-      {
-        _id: "65c30b96e639681a13def0b5",
-        name: "Jane Smith",
-        title: "Product Manager",
-        email: "jane.smith@example.com",
-      },
-    ],
-    isTrashed: false,
-    activities: [
-      {
-        type: "assigned",
-        activity: "Test activity. Let's go!!!",
-        date: "2024-02-08T17:55:34.353Z",
-        by: "65c202d4aa62f32ffd1303cc",
-        _id: "65c5188be1585cfa650b79c4",
-      },
-      {
-        type: "in progress",
-        activity: "Project is progress. Hiope to fin=ish soon!!",
-        date: "2024-02-08T17:55:34.353Z",
-        by: "65c202d4aa62f32ffd1303cc",
-        _id: "65c518dce1585cfa650b79da",
-      },
-      {
-        type: "bug",
-        activity: "Bug found in the code. Kindly check and fixed ASAP!!!",
-        date: "2024-02-08T18:13:14.717Z",
-        by: "65c202d4aa62f32ffd1303cc",
-        _id: "65c51a5e8064df97d208b392",
-      },
-      {
-        type: "commented",
-        activity: "Nice work. Let's finished hard!!!",
-        date: "2024-02-08T18:13:14.717Z",
-        by: "65c202d4aa62f32ffd1303cc",
-        _id: "65c51af08064df97d208b3b0",
-      },
-    ],
-    subtickets: [
-      {
-        title: "Blog App Dashboard",
-        date: "2024-02-06T00:00:00.000Z",
-        tag: "Design",
-        _id: "65c352e776ed5c48f944095c",
-      },
-      {
-        title: "Blog App Admin Dashboard",
-        date: "2024-02-07T00:00:00.000Z",
-        tag: "Design",
-        _id: "65c3531476ed5c48f9440965",
-      },
-    ],
-    createdAt: "2024-02-08T05:01:26.983Z",
-    updatedAt: "2024-02-09T06:51:15.005Z",
-    __v: 8,
-  },
+  // {
+  //   _id: "65c5f12ab5204a81bde866a9",
+  //   title: "Test Ticket",
+  //   date: "2024-02-09T00:00:00.000Z",
+  //   priority: "high",
+  //   stage: "todo",
+  //   assets: [
+  //     "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707471138863original-a005132062ca5bafc505c4c74f0e1865.jpg?alt=media&token=55f909f2-7f05-42f3-af4f-dc7f87cdea1d",
+  //     "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707471144712PsZch9E1_400x400.jpg?alt=media&token=7ce62c7e-c240-4032-83c6-bb6c9cdc0d4b",
+  //   ],
+  //   team: [
+  //     {
+  //       _id: "65c202d4aa62f32ffd1303cc",
+  //       name: "Codewave Asante",
+  //       title: "Administrator",
+  //       email: "admin@gmail.com",
+  //     },
+  //     {
+  //       _id: "65c30b96e639681a13def0b5",
+  //       name: "Jane Smith",
+  //       title: "Product Manager",
+  //       email: "jane.smith@example.com",
+  //     },
+  //     {
+  //       _id: "65c317360fd860f958baa08e",
+  //       name: "Alex Johnson",
+  //       title: "UX Designer",
+  //       email: "alex.johnson@example.com",
+  //     },
+  //   ],
+  //   isTrashed: false,
+  //   activities: [],
+  //   subTickets: [
+  //     {
+  //       title: "Ticket manager youtube tutorial",
+  //       date: "2024-02-09T00:00:00.000Z",
+  //       tag: "tutorial",
+  //       _id: "65c5f153b5204a81bde866c8",
+  //     },
+  //   ],
+  //   createdAt: "2024-02-09T09:32:26.574Z",
+  //   updatedAt: "2024-02-09T09:36:53.339Z",
+  //   __v: 1,
+  // },
+  // {
+  //   _id: "65c5d547660756f6fd453a7a",
+  //   title: "Duplicate - Duplicate - Review Code Changes",
+  //   date: "2024-02-09T00:00:00.000Z",
+  //   priority: "medium",
+  //   stage: "in progress",
+  //   assets: [],
+  //   team: [
+  //     {
+  //       _id: "65c317360fd860f958baa08e",
+  //       name: "Alex Johnson",
+  //       title: "UX Designer",
+  //       email: "alex.johnson@example.com",
+  //     },
+  //     {
+  //       _id: "65c3176a0fd860f958baa099",
+  //       name: "Emily Wilson",
+  //       title: "Data Analyst",
+  //       email: "emily.wilson@example.com",
+  //     },
+  //   ],
+  //   isTrashed: false,
+  //   activities: [
+  //     {
+  //       type: "started",
+  //       activity: "Project started",
+  //       date: "2024-02-09T09:16:56.623Z",
+  //       by: "65c202d4aa62f32ffd1303cc",
+  //       _id: "65c5f18bb5204a81bde866d1",
+  //     },
+  //     {
+  //       type: "commented",
+  //       activity: "i like coding!!",
+  //       date: "2024-02-09T09:16:56.623Z",
+  //       by: "65c202d4aa62f32ffd1303cc",
+  //       _id: "65c5f19eb5204a81bde866dd",
+  //     },
+  //     {
+  //       type: "bug",
+  //       activity: "bug found",
+  //       date: "2024-02-09T09:16:56.623Z",
+  //       by: "65c202d4aa62f32ffd1303cc",
+  //       _id: "65c5f1abb5204a81bde866eb",
+  //     },
+  //   ],
+  //   subTickets: [
+  //     {
+  //       title: "Blog App Admin Dashboard",
+  //       date: "2024-02-08T00:00:00.000Z",
+  //       tag: "Website App",
+  //       _id: "65c3535476ed5c48f9440973",
+  //     },
+  //   ],
+  //   createdAt: "2024-02-09T07:33:27.590Z",
+  //   updatedAt: "2024-02-09T09:36:10.386Z",
+  //   __v: 4,
+  // },
+  // {
+  //   _id: "65c46026af6ec0118be9407a",
+  //   title: "Website Project Proposal Review",
+  //   date: "2024-02-07T00:00:00.000Z",
+  //   priority: "high",
+  //   stage: "todo",
+  //   assets: [
+  //     "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707410130023hand-holding-writing-checklist-application-form-document-clipboard-white-background-3d-illustration.jpg?alt=media&token=08de4848-517f-48ca-a9b4-624744d5ddb0",
+  //     "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412301523image_processing20220706-26930-ktfgon.png?alt=media&token=6cd185c1-9fc3-4f52-bb0b-0d4a29e65b85",
+  //     "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412306237image_processing20220706-11953-1f826f4.png?alt=media&token=7270475f-a994-41fd-8ae6-62e00f72b0b3",
+  //   ],
+  //   team: [
+  //     {
+  //       _id: "65c202d4aa62f32ffd1303cc",
+  //       name: "Codewave Asante",
+  //       title: "Administrator",
+  //       email: "admin@gmail.com",
+  //     },
+  //     {
+  //       _id: "65c27a0e18c0a1b750ad5cad",
+  //       name: "John Doe",
+  //       title: "Software Engineer",
+  //       email: "john.doe@example.com",
+  //     },
+  //     {
+  //       _id: "65c30b96e639681a13def0b5",
+  //       name: "Jane Smith",
+  //       title: "Product Manager",
+  //       email: "jane.smith@example.com",
+  //     },
+  //   ],
+  //   isTrashed: false,
+  //   activities: [
+  //     {
+  //       type: "assigned",
+  //       activity: "Test activity. Let's go!!!",
+  //       date: "2024-02-08T17:55:34.353Z",
+  //       by: "65c202d4aa62f32ffd1303cc",
+  //       _id: "65c5188be1585cfa650b79c4",
+  //     },
+  //     {
+  //       type: "in progress",
+  //       activity: "Project is progress. Hiope to fin=ish soon!!",
+  //       date: "2024-02-08T17:55:34.353Z",
+  //       by: "65c202d4aa62f32ffd1303cc",
+  //       _id: "65c518dce1585cfa650b79da",
+  //     },
+  //     {
+  //       type: "bug",
+  //       activity: "Bug found in the code. Kindly check and fixed ASAP!!!",
+  //       date: "2024-02-08T18:13:14.717Z",
+  //       by: "65c202d4aa62f32ffd1303cc",
+  //       _id: "65c51a5e8064df97d208b392",
+  //     },
+  //     {
+  //       type: "commented",
+  //       activity: "Nice work. Let's finished hard!!!",
+  //       date: "2024-02-08T18:13:14.717Z",
+  //       by: "65c202d4aa62f32ffd1303cc",
+  //       _id: "65c51af08064df97d208b3b0",
+  //     },
+  //   ],
+  //   subTickets: [
+  //     {
+  //       title: "Blog App Dashboard",
+  //       date: "2024-02-06T00:00:00.000Z",
+  //       tag: "Design",
+  //       _id: "65c352e776ed5c48f944095c",
+  //     },
+  //     {
+  //       title: "Blog App Admin Dashboard",
+  //       date: "2024-02-07T00:00:00.000Z",
+  //       tag: "Design",
+  //       _id: "65c3531476ed5c48f9440965",
+  //     },
+  //   ],
+  //   createdAt: "2024-02-08T05:01:26.983Z",
+  //   updatedAt: "2024-02-09T06:51:15.005Z",
+  //   __v: 8,
+  // },
   {
     _id: "65c45fb6af6ec0118be94052",
-    title: "Task Manager Youtube Video",
+    title: "Ticket Manager Youtube Video",
     date: "2024-02-11T00:00:00.000Z",
     priority: "medium",
     stage: "completed",
     assets: [
-      "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412043078report.jpg?alt=media&token=41d02b42-c25c-4fbb-90a9-340a45f4bbe1",
-      "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412052287hand-holding-writing-checklist-application-form-document-clipboard-white-background-3d-illustration.jpg?alt=media&token=98b360b4-954c-47e3-8283-8228a54a327c",
+      "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412043078report.jpg?alt=media&token=41d02b42-c25c-4fbb-90a9-340a45f4bbe1",
+      "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412052287hand-holding-writing-checklist-application-form-document-clipboard-white-background-3d-illustration.jpg?alt=media&token=98b360b4-954c-47e3-8283-8228a54a327c",
     ],
     team: [
       {
@@ -819,7 +819,7 @@ export const tickets = [
         _id: "65c51b998064df97d208b3f9",
       },
     ],
-    subtickets: [
+    subTickets: [
       {
         title: "Blog App Admin Dashboard",
         date: "2024-02-08T00:00:00.000Z",
@@ -831,61 +831,61 @@ export const tickets = [
     updatedAt: "2024-02-09T06:51:15.005Z",
     __v: 3,
   },
-  {
-    _id: "65c4586f0548279012f8c256",
-    title: "Bug Fixing",
-    date: "2024-02-07T00:00:00.000Z",
-    priority: "high",
-    stage: "todo",
-    assets: [
-      "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412457946Wed%20Dev%20Course.png?alt=media&token=028416bf-88c6-4738-9a5a-d90e6d53b202",
-      "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412466672original-380755132e03e80a9fa3ef1203219cf3.png?alt=media&token=10d96b0d-feea-4627-aa1e-9b8f87cf7500",
-      "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412469358original-a738b8d0cbced29ae8609072d006fbcb.jpg?alt=media&token=9a6cc56f-63ff-4405-b978-d962c3c1f1d0",
-      "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412472346cosial.png?alt=media&token=b6e427b3-bc36-4fa2-a8f9-438f9ebf93e2",
-      "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412478590original-a005132062ca5bafc505c4c74f0e1865.jpg?alt=media&token=e81047bd-a1e2-49e5-85f5-feda31c423f2",
-    ],
-    team: [
-      {
-        _id: "65c30b96e639681a13def0b5",
-        name: "Jane Smith",
-        title: "Product Manager",
-        email: "jane.smith@example.com",
-      },
-      {
-        _id: "65c202d4aa62f32ffd1303cc",
-        name: "Codewave Asante",
-        title: "Administrator",
-        email: "admin@gmail.com",
-      },
-      {
-        _id: "65c317360fd860f958baa08e",
-        name: "Alex Johnson",
-        title: "UX Designer",
-        email: "alex.johnson@example.com",
-      },
-    ],
-    isTrashed: false,
-    activities: [
-      {
-        type: "commented",
-        activity: "Great!!!",
-        date: "2024-02-08T18:13:14.717Z",
-        by: "65c202d4aa62f32ffd1303cc",
-        _id: "65c51b678064df97d208b3d6",
-      },
-    ],
-    subtickets: [
-      {
-        title: "Check Login code and fix bugs asap",
-        date: "2024-02-08T00:00:00.000Z",
-        tag: "Bug Fixing",
-        _id: "65c46074af6ec0118be94094",
-      },
-    ],
-    createdAt: "2024-02-08T04:28:31.966Z",
-    updatedAt: "2024-02-09T06:51:15.005Z",
-    __v: 3,
-  },
+  // {
+  //   _id: "65c4586f0548279012f8c256",
+  //   title: "Bug Fixing",
+  //   date: "2024-02-07T00:00:00.000Z",
+  //   priority: "high",
+  //   stage: "todo",
+  //   assets: [
+  //     "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412457946Wed%20Dev%20Course.png?alt=media&token=028416bf-88c6-4738-9a5a-d90e6d53b202",
+  //     "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412466672original-380755132e03e80a9fa3ef1203219cf3.png?alt=media&token=10d96b0d-feea-4627-aa1e-9b8f87cf7500",
+  //     "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412469358original-a738b8d0cbced29ae8609072d006fbcb.jpg?alt=media&token=9a6cc56f-63ff-4405-b978-d962c3c1f1d0",
+  //     "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412472346cosial.png?alt=media&token=b6e427b3-bc36-4fa2-a8f9-438f9ebf93e2",
+  //     "https://firebasestorage.googleapis.com/v0/b/Ticketmanager-557d7.appspot.com/o/1707412478590original-a005132062ca5bafc505c4c74f0e1865.jpg?alt=media&token=e81047bd-a1e2-49e5-85f5-feda31c423f2",
+  //   ],
+  //   team: [
+  //     {
+  //       _id: "65c30b96e639681a13def0b5",
+  //       name: "Jane Smith",
+  //       title: "Product Manager",
+  //       email: "jane.smith@example.com",
+  //     },
+  //     {
+  //       _id: "65c202d4aa62f32ffd1303cc",
+  //       name: "Codewave Asante",
+  //       title: "Administrator",
+  //       email: "admin@gmail.com",
+  //     },
+  //     {
+  //       _id: "65c317360fd860f958baa08e",
+  //       name: "Alex Johnson",
+  //       title: "UX Designer",
+  //       email: "alex.johnson@example.com",
+  //     },
+  //   ],
+  //   isTrashed: false,
+  //   activities: [
+  //     {
+  //       type: "commented",
+  //       activity: "Great!!!",
+  //       date: "2024-02-08T18:13:14.717Z",
+  //       by: "65c202d4aa62f32ffd1303cc",
+  //       _id: "65c51b678064df97d208b3d6",
+  //     },
+  //   ],
+  //   subTickets: [
+  //     {
+  //       title: "Check Login code and fix bugs asap",
+  //       date: "2024-02-08T00:00:00.000Z",
+  //       tag: "Bug Fixing",
+  //       _id: "65c46074af6ec0118be94094",
+  //     },
+  //   ],
+  //   createdAt: "2024-02-08T04:28:31.966Z",
+  //   updatedAt: "2024-02-09T06:51:15.005Z",
+  //   __v: 3,
+  // },
   {
     _id: "65c3c457fb9c6768ce4bc31a",
     title: "Duplicate - Website Project Proposal",
@@ -915,7 +915,7 @@ export const tickets = [
     ],
     isTrashed: false,
     activities: [],
-    subtickets: [
+    subTickets: [
       {
         title: "Blog App Dashboard",
         date: "2024-02-06T00:00:00.000Z",
@@ -956,7 +956,7 @@ export const tickets = [
     ],
     isTrashed: false,
     activities: [],
-    subtickets: [
+    subTickets: [
       {
         title: "Blog App Admin Dashboard",
         date: "2024-02-08T00:00:00.000Z",
@@ -997,7 +997,7 @@ export const tickets = [
     ],
     isTrashed: false,
     activities: [],
-    subtickets: [
+    subTickets: [
       {
         title: "Blog App Dashboard",
         date: "2024-02-06T00:00:00.000Z",
@@ -1038,7 +1038,7 @@ export const tickets = [
     ],
     isTrashed: false,
     activities: [],
-    subtickets: [
+    subTickets: [
       {
         title: "Blog App Admin Dashboard",
         date: "2024-02-08T00:00:00.000Z",
@@ -1079,7 +1079,7 @@ export const tickets = [
     ],
     isTrashed: false,
     activities: [],
-    subtickets: [
+    subTickets: [
       {
         title: "Blog App Dashboard",
         date: "2024-02-06T00:00:00.000Z",
@@ -1117,7 +1117,7 @@ export const activitiesData = [
   {
     _id: "0",
     type: "started",
-    activity: "started this task.",
+    activity: "started this Ticket.",
     date: new Date("2023-01-15").toISOString(),
     by: "Akwasi Asante",
   },
@@ -1132,7 +1132,7 @@ export const activitiesData = [
   {
     _id: "2",
     type: "assigned",
-    activity: "task to Codewave Asante",
+    activity: "Ticket to Codewave Asante",
     date: new Date("2023-01-15").toISOString(),
     by: "Akwasi Asante",
   },
@@ -1155,7 +1155,7 @@ export const activitiesData = [
   {
     _id: "4",
     type: "completed",
-    activity: "Codewave Asante has completed the task assigned",
+    activity: "Codewave Asante has completed the Ticket assigned",
     date: new Date("2023-01-15").toISOString(),
     by: "Akwasi Asante",
   },

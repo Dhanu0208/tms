@@ -7,7 +7,7 @@ import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
 import { Toaster } from "sonner";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import Tickets from "./pages/Dashboard";
+import Tickets from "./pages/Tickets";
 import Users from "./pages/Users";
 import Trash from "./pages/Trash";
 import TicketDetails from "./pages/TicketDetails";
