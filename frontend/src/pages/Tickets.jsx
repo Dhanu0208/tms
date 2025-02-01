@@ -20,7 +20,7 @@ const TABS = [
 
 const TICKET_TYPE = {
   todo: "bg-blue-600",
-  inProgress: "bg-yellow-600",
+  inProgress: "bg-yellow-400",
   completed: "bg-green-600",
 };
 

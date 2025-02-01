@@ -57,7 +57,6 @@ const TicketCard = ({ ticket }) => {
           </span>
         </>
 
-        <div className="w-full border-t border-gray-200 my-2" />
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-3">
             {/* <div className="flex gap-1 items-center text-sm text-gray-600">
@@ -88,6 +87,7 @@ const TicketCard = ({ ticket }) => {
             ))}
           </div>
         </div>
+        <div className="w-full border-b border-gray-200 my-2" />
 
         {/* sub tickets */}
         {/* {ticket?.subTickets?.length > 0 ? (
