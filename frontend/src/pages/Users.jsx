@@ -7,6 +7,12 @@ import { getInitials } from "../utils";
 import clsx from "clsx";
 import ConfirmatioDialog, { UserAction } from "../components/Dialogs";
 import AddUser from "../components/AddUser";
+import {
+  useDeleteUserMutation,
+  useGetTeamListQuery,
+  useUserActionMutation,
+} from "../redux/slices/api/userApiSlice";
+import { toast } from "sonner";
 
 const Users = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -14,8 +20,45 @@ const Users = () => {
   const [openAction, setOpenAction] = useState(false);
   const [selected, setSelected] = useState(null);
 
-  const userActionHandler = () => {};
-  const deleteHandler = () => {};
+  const { data, isLoading, refetch } = useGetTeamListQuery();
+  const [deleteUser] = useDeleteUserMutation();
+  const [userAction] = useUserActionMutation();
+
+  const userActionHandler = async () => {
+    try {
+      const result = await userAction({
+        isActive: !selected?.isActive,
+        id: selected?.id,
+      });
+
+      refetch();
+      toast.success(result?.data.message);
+      setSelected(null);
+      setTimeout(() => {
+        setOpenAction(false);
+      }, 500);
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.data?.message || error.message);
+    }
+  };
+
+  const deleteHandler = async () => {
+    try {
+      const result = await deleteUser(selected);
+
+      refetch();
+
+      toast.success("User deleted successfully");
+      setSelected(null);
+      setTimeout(() => {
+        setOpenDialog(false);
+      }, 500);
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.data?.message || error.message);
+    }
+  };
 
   const deleteClick = (id) => {
     setSelected(id);
@@ -25,6 +68,11 @@ const Users = () => {
   const editClick = (el) => {
     setSelected(el);
     setOpen(true);
+  };
+
+  const userStatusClick = (el) => {
+    setSelected(el);
+    setOpenAction(true);
   };
 
   const TableHeader = () => (
@@ -58,7 +106,7 @@ const Users = () => {
 
       <td>
         <button
-          // onClick={() => userStatusClick(user)}
+          onClick={() => userStatusClick(user)}
           className={clsx(
             "w-fit px-4 py-1 rounded-full",
             user?.isActive ? "bg-blue-200" : "bg-yellow-100"
@@ -69,18 +117,18 @@ const Users = () => {
       </td>
 
       <td className="p-2 flex gap-4 justify-end">
-        <Button
+        {/* <Button
           className="text-blue-600 hover:text-blue-500 font-semibold sm:px-0"
           label="Edit"
           type="button"
           onClick={() => editClick(user)}
-        />
+        /> */}
 
         <Button
           className="text-red-700 hover:text-red-500 font-semibold sm:px-0"
           label="Delete"
           type="button"
-          onClick={() => deleteClick(user?._id)}
+          onClick={() => deleteClick(user?.id)}
         />
       </td>
     </tr>
@@ -104,7 +152,7 @@ const Users = () => {
             <table className="w-full mb-5">
               <TableHeader />
               <tbody>
-                {summary.users?.map((user, index) => (
+                {data?.map((user, index) => (
                   <TableRow key={index} user={user} />
                 ))}
               </tbody>
