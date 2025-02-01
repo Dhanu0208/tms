@@ -36,19 +36,19 @@ export function getInitials(fullName) {
 
 export const PRIOTITYSTYELS = {
   high: "text-red-600",
-  medium: "text-yellow-600",
+  medium: "text-yellow-400",
   low: "text-blue-600",
 };
 
 export const TICKET_TYPE = {
   todo: "bg-blue-600",
-  "in progress": "bg-yellow-600",
+  "in progress": "bg-yellow-400",
   completed: "bg-green-600",
 };
 
 export const BGS = [
   "bg-blue-600",
-  "bg-yellow-600",
+  "bg-yellow-400",
   "bg-red-600",
   "bg-green-600",
 ];

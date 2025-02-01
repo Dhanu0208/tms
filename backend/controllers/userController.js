@@ -27,7 +27,11 @@ export const registerUser = async (req, res) => {
       newUser.password = undefined;
       res
         .status(201)
-        .json({ status: true, message: "User registered successfully" });
+        .json({
+          status: true,
+          newUser,
+          message: "User registered successfully",
+        });
     } else {
       return res
         .status(400)
