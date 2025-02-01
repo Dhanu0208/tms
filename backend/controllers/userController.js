@@ -15,31 +15,30 @@ export const registerUser = async (req, res) => {
     }
 
     const newUser = await createUser({
-      name,
-      email,
-      password,
-      isAdmin,
-      role,
-      title,
+      name: name || null,
+      email: email || null,
+      password: password || null,
+      isAdmin: isAdmin ?? false,
+      role: role || null,
+      title: title || null,
     });
+
     if (newUser) {
-      isAdmin ? createJWT(res, newUser.id) : null;
+      if (isAdmin) createJWT(res, newUser.id);
       newUser.password = undefined;
-      res
-        .status(201)
-        .json({
-          status: true,
-          newUser,
-          message: "User registered successfully",
-        });
+      return res.status(201).json({
+        status: true,
+        newUser,
+        message: "User registered successfully",
+      });
     } else {
       return res
         .status(400)
         .json({ status: false, message: "Invalid user data" });
     }
   } catch (error) {
-    console.log(error);
-    return res.status(400).json({ status: false, message: error.message });
+    console.error("Error creating user:", error);
+    return res.status(500).json({ status: false, message: "Server error" });
   }
 };
 
