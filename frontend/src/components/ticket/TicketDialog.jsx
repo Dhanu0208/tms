@@ -9,6 +9,11 @@ import { Menu, Transition } from "@headlessui/react";
 import ConfirmatioDialog from "../Dialogs";
 import AddSubTicket from "./AddSubTicket";
 import AddTicket from "./AddTicket";
+import {
+  useDuplicateTicketMutation,
+  useTrashTicketMutation,
+} from "../../redux/slices/api/ticketApiSlice";
+import { toast } from "sonner";
 
 const TicketDialog = ({ ticket }) => {
   const [open, setOpen] = useState(false);
@@ -17,16 +22,52 @@ const TicketDialog = ({ ticket }) => {
 
   const navigate = useNavigate();
 
-  const duplicateHandler = () => {};
-  const deleteClicks = () => {};
-  const deleteHandler = () => {};
+  const [deleteTicket] = useTrashTicketMutation();
+  const [duplicateTicket] = useDuplicateTicketMutation();
+
+  const duplicateHandler = async () => {
+    try {
+      const res = await duplicateTicket(ticket.id).unwrap();
+      toast.success(res?.message);
+      setTimeout(() => {
+        setOpenDialog(false);
+        window.location.reload();
+      }, 500);
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.data?.message || err.error);
+    }
+  };
+
+  const deleteClicks = () => {
+    setOpenDialog(true);
+  };
+
+  const deleteHandler = async () => {
+    try {
+      const res = await deleteTicket({
+        id: ticket.id,
+        isTrashed: "trash",
+      }).unwrap();
+
+      toast.success(res?.message);
+
+      setTimeout(() => {
+        setOpenDialog(false);
+        window.location.reload();
+      }, 500);
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.data?.message || err.error);
+    }
+  };
 
   const items = [
-    {
-      label: "Open Ticket",
-      icon: <AiTwotoneFolderOpen className="mr-2 h-5 w-5" aria-hidden="true" />,
-      onClick: () => navigate(`/ticket/${ticket._id}`),
-    },
+    // {
+    //   label: "Open Ticket",
+    //   icon: <AiTwotoneFolderOpen className="mr-2 h-5 w-5" aria-hidden="true" />,
+    //   onClick: () => navigate(`/ticket/${ticket.id}`),
+    // },
     {
       label: "Edit",
       icon: <MdOutlineEdit className="mr-2 h-5 w-5" aria-hidden="true" />,

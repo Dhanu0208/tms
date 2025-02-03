@@ -7,20 +7,40 @@ import UserList from "./UserList";
 import SelectList from "../SelectList";
 import { BiImages } from "react-icons/bi";
 import Button from "../Button";
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
+import { app } from "../../utils/firebase";
+import {
+  useCreateTicketMutation,
+  useUpdateTicketMutation,
+} from "../../redux/slices/api/ticketApiSlice";
+import { toast } from "sonner";
+import { dateFormatter } from "../../utils";
 
 const LISTS = ["TODO", "IN PROGRESS", "COMPLETED"];
 const PRIORIRY = ["HIGH", "MEDIUM", "NORMAL", "LOW"];
 
 const uploadedFileURLs = [];
 
-const AddTicket = ({ open, setOpen }) => {
-  const ticket = "";
+const AddTicket = ({ open, setOpen, ticket }) => {
+  const defaultValues = {
+    title: ticket?.title || "",
+    date: dateFormatter(ticket?.date || new Date()),
+    stage: ticket?.stage || "",
+    priority: ticket?.priority || "",
+    assets: [],
+  };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({ defaultValues });
+
   const [team, setTeam] = useState(ticket?.team || []);
   const [stage, setStage] = useState(ticket?.stage?.toUpperCase() || LISTS[0]);
   const [priority, setPriority] = useState(
@@ -29,10 +49,81 @@ const AddTicket = ({ open, setOpen }) => {
   const [assets, setAssets] = useState([]);
   const [uploading, setUploading] = useState(false);
 
-  const submitHandler = () => {};
+  const [createTicket, { isLoading }] = useCreateTicketMutation();
+  const [updateTicket, { isLoading: isUpdating }] = useUpdateTicketMutation();
+  const URLS = ticket?.assets ? [...ticket.assets] : [];
+
+  const submitHandler = async (data) => {
+    for (const file of assets) {
+      setUploading(true);
+      try {
+        await uploadFile(file);
+      } catch (error) {
+        console.log("Error uploading file:", error.message);
+        return;
+      } finally {
+        setUploading(false);
+      }
+    }
+
+    try {
+      const newData = {
+        ...data,
+        assets: [...URLS, ...uploadedFileURLs],
+        team,
+        stage,
+        priority,
+      };
+
+      const res = ticket?.id
+        ? await updateTicket({ ...newData, id: ticket.id })
+        : await createTicket(newData).unwrap();
+
+      toast.success(res?.message);
+
+      setTimeout(() => {
+        setOpen(false);
+        window.location.reload();
+      }, 500);
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.data?.message || err.error);
+    }
+  };
 
   const handleSelect = (e) => {
     setAssets(e.target.files);
+  };
+
+  const uploadFile = async (file) => {
+    const storage = getStorage(app);
+
+    const name = new Date().getTime() + file.name;
+    const storageRef = ref(storage, name);
+
+    const uploadTicket = uploadBytesResumable(storageRef, file);
+
+    return new Promise((resolve, reject) => {
+      uploadTicket.on(
+        "state_changed",
+        (snapshot) => {
+          console.log("uploading");
+        },
+        (error) => {
+          reject(error);
+        },
+        () => {
+          getDownloadURL(uploadTicket.snapshot.ref)
+            .then((downloadURL) => {
+              uploadedFileURLs.push(downloadURL);
+              resolve();
+            })
+            .catch((error) => {
+              reject(error);
+            });
+        }
+      );
+    });
   };
 
   return (
@@ -90,7 +181,7 @@ const AddTicket = ({ open, setOpen }) => {
                 setSelected={setPriority}
               />
 
-              <div className="w-full flex items-center justify-center mt-4">
+              {/* <div className="w-full flex items-center justify-center mt-4">
                 <label
                   className="flex items-center gap-1 text-base text-ascent-2 hover:text-ascent-1 cursor-pointer my-4"
                   htmlFor="imgUpload"
@@ -106,10 +197,10 @@ const AddTicket = ({ open, setOpen }) => {
                   <BiImages />
                   <span>Add Assets</span>
                 </label>
-              </div>
+              </div> */}
             </div>
 
-            <div className="bg-gray-50 py-6 sm:flex sm:flex-row-reverse gap-4">
+            <div className="py-6 sm:flex sm:flex-row-reverse gap-4">
               {uploading ? (
                 <span className="text-sm py-2 text-red-500">
                   Uploading assets

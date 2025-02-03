@@ -90,8 +90,8 @@ const TicketCard = ({ ticket }) => {
         <div className="w-full border-b border-gray-200 my-2" />
 
         {/* sub tickets */}
-        {/* {ticket?.subTickets?.length > 0 ? (
-          <div className="py-4 border-t border-gray-200">
+        {ticket?.subTickets?.length > 0 ? (
+          <div className="py-4">
             <h5 className="text-base line-clamp-1 text-black">
               {ticket?.subTickets[0].title}
             </h5>
@@ -107,11 +107,11 @@ const TicketCard = ({ ticket }) => {
           </div>
         ) : (
           <>
-            <div className="py-4 border-t border-gray-200">
+            <div className="py-4">
               <span className="text-gray-500">No Sub Tickets</span>
             </div>
           </>
-        )} */}
+        )}
 
         <div className="w-full pb-2">
           <button
@@ -125,7 +125,7 @@ const TicketCard = ({ ticket }) => {
         </div>
       </div>
 
-      <AddSubTicket open={open} setOpen={setOpen} id={ticket._id} />
+      <AddSubTicket open={open} setOpen={setOpen} id={ticket.id} />
     </>
   );
 };

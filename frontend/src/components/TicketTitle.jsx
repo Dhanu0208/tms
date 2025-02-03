@@ -10,9 +10,9 @@ const TicketTitle = ({ label, className }) => {
         <p className="text-sm md:text-base text-gray-600">{label}</p>
       </div>
 
-      <button className="hidden md:block">
+      {/* <button className="hidden md:block">
         <IoMdAdd className="text-lg text-black" />
-      </button>
+      </button> */}
     </div>
   );
 };

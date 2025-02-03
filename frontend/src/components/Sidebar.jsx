@@ -23,21 +23,21 @@ const linkData = [
     link: "tickets",
     icon: <FaTasks />,
   },
-  {
-    label: "Completed",
-    link: "completed/completed",
-    icon: <MdTaskAlt />,
-  },
-  {
-    label: "In Progress",
-    link: "in-progress/in progress",
-    icon: <MdOutlinePendingActions />,
-  },
-  {
-    label: "To Do",
-    link: "todo/todo",
-    icon: <MdOutlinePendingActions />,
-  },
+  // {
+  //   label: "Completed",
+  //   link: "completed/completed",
+  //   icon: <MdTaskAlt />,
+  // },
+  // {
+  //   label: "In Progress",
+  //   link: "in-progress/in progress",
+  //   icon: <MdOutlinePendingActions />,
+  // },
+  // {
+  //   label: "To Do",
+  //   link: "todo/todo",
+  //   icon: <MdOutlinePendingActions />,
+  // },
   {
     label: "Users",
     link: "users",

@@ -93,7 +93,7 @@ const Table = ({ tickets }) => {
         <div className="flex">
           {ticket?.team?.map((m, index) => (
             <div
-              key={m._id}
+              key={m.id}
               className={clsx(
                 "w-7 h-7 rounded-full text-white flex items-center justify-center text-sm -mr-1",
                 BGS[index % BGS?.length]
@@ -116,7 +116,7 @@ const Table = ({ tickets }) => {
           className="text-red-700 hover:text-red-500 sm:px-0 text-sm md:text-base"
           label="Delete"
           type="button"
-          onClick={() => deleteClicks(ticket._id)}
+          onClick={() => deleteClicks(ticket.id)}
         />
       </td>
     </tr>
