@@ -12,6 +12,7 @@ import { tickets } from "../assets/data";
 import TicketTitle from "../components/TicketTitle";
 import Table from "../components/ticket/Table";
 import AddTicket from "../components/ticket/AddTicket";
+import { useGetAllTicketQuery } from "../redux/slices/api/ticketApiSlice";
 
 const TABS = [
   { title: "Board View", icon: <MdGridView /> },
@@ -29,11 +30,16 @@ const Tickets = () => {
 
   const [selected, setSelected] = useState(0);
   const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const status = params?.status || "";
 
-  return loading ? (
+  const { data, isLoading } = useGetAllTicketQuery({
+    strQuery: status,
+    isTrashed: "",
+    search: "",
+  });
+
+  return isLoading ? (
     <div className="py-10">
       <Loading />
     </div>
@@ -65,10 +71,10 @@ const Tickets = () => {
         )}
 
         {selected !== 1 ? (
-          <BoardView tickets={tickets} />
+          <BoardView tickets={data.tickets} />
         ) : (
           <div className="w-full">
-            <Table tickets={tickets} />
+            <Table tickets={data.tickets} />
           </div>
         )}
       </Tabs>

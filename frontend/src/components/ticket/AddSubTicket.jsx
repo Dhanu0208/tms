@@ -3,6 +3,8 @@ import ModalWrapper from "../ModalWrapper";
 import { Dialog } from "@headlessui/react";
 import Textbox from "../Textbox";
 import Button from "../Button";
+import { useCreateSubTicketMutation } from "../../redux/slices/api/ticketApiSlice";
+import { toast } from "sonner";
 
 const AddSubTicket = ({ open, setOpen, id }) => {
   const {
@@ -11,19 +13,20 @@ const AddSubTicket = ({ open, setOpen, id }) => {
     formState: { errors },
   } = useForm();
 
-  // const [addSbTask] = useCreateSubTaskMutation();
+  const [addSbTicket] = useCreateSubTicketMutation();
 
   const handleOnSubmit = async (data) => {
-    // try {
-    //   const res = await addSbTask({ data, id }).unwrap();
-    //   toast.success(res.message);
-    //   setTimeout(() => {
-    //     setOpen(false);
-    //   }, 500);
-    // } catch (err) {
-    //   console.log(err);
-    //   toast.error(err?.data?.message || err.error);
-    // }
+    try {
+      const res = await addSbTicket({ data, id }).unwrap();
+      toast.success(res?.message);
+
+      setTimeout(() => {
+        setOpen(false);
+      }, 500);
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.data?.message || err.error);
+    }
   };
 
   return (
