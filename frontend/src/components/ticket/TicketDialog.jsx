@@ -63,11 +63,11 @@ const TicketDialog = ({ ticket }) => {
   };
 
   const items = [
-    // {
-    //   label: "Open Ticket",
-    //   icon: <AiTwotoneFolderOpen className="mr-2 h-5 w-5" aria-hidden="true" />,
-    //   onClick: () => navigate(`/ticket/${ticket.id}`),
-    // },
+    {
+      label: "Open Ticket",
+      icon: <AiTwotoneFolderOpen className="mr-2 h-5 w-5" aria-hidden="true" />,
+      onClick: () => navigate(`/tickets/${ticket.id}`),
+    },
     {
       label: "Edit",
       icon: <MdOutlineEdit className="mr-2 h-5 w-5" aria-hidden="true" />,

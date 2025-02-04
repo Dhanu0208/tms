@@ -20,6 +20,14 @@ export const ticketApiSlice = apiSlice.injectEndpoints({
       }),
     }),
 
+    getTicketById: builder.query({
+      query: (id) => ({
+        url: `${TICKET_URL}/${id}`,
+        method: "GET",
+        credentials: "include",
+      }),
+    }),
+
     createTicket: builder.mutation({
       query: (data) => ({
         url: `${TICKET_URL}/create`,
@@ -63,15 +71,26 @@ export const ticketApiSlice = apiSlice.injectEndpoints({
         credentials: "include",
       }),
     }),
+
+    postActivity: builder.mutation({
+      query: ({ data, id }) => ({
+        url: `${TICKET_URL}/activity/${id}`,
+        method: "POST",
+        body: data,
+        credentials: "include",
+      }),
+    }),
   }),
 });
 
 export const {
   useGetDashboardStatsQuery,
   useGetAllTicketQuery,
+  useGetTicketByIdQuery,
   useCreateTicketMutation,
   useDuplicateTicketMutation,
   useUpdateTicketMutation,
   useTrashTicketMutation,
   useCreateSubTicketMutation,
+  usePostActivityMutation,
 } = ticketApiSlice;
