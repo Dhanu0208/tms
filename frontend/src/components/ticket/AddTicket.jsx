@@ -95,34 +95,55 @@ const AddTicket = ({ open, setOpen, ticket }) => {
     setAssets(e.target.files);
   };
 
+  // const uploadFile = async (file) => {
+  //   const storage = getStorage(app);
+
+  //   const name = new Date().getTime() + file.name;
+  //   const storageRef = ref(storage, name);
+
+  //   const uploadTicket = uploadBytesResumable(storageRef, file);
+
+  //   return new Promise((resolve, reject) => {
+  //     uploadTicket.on(
+  //       "state_changed",
+  //       (snapshot) => {
+  //         console.log("uploading");
+  //       },
+  //       (error) => {
+  //         reject(error);
+  //       },
+  //       () => {
+  //         getDownloadURL(uploadTicket.snapshot.ref)
+  //           .then((downloadURL) => {
+  //             uploadedFileURLs.push(downloadURL);
+  //             resolve();
+  //           })
+  //           .catch((error) => {
+  //             reject(error);
+  //           });
+  //       }
+  //     );
+  //   });
+  // };
+
   const uploadFile = async (file) => {
-    const storage = getStorage(app);
+    return new Promise((resolve) => {
+      const reader = new FileReader();
 
-    const name = new Date().getTime() + file.name;
-    const storageRef = ref(storage, name);
+      reader.onload = (event) => {
+        const fileData = event.target.result; // Base64 Data URL
 
-    const uploadTicket = uploadBytesResumable(storageRef, file);
+        // Save the image to localStorage with a unique key
+        const fileKey = `uploaded_image_${Date.now()}`;
+        localStorage.setItem(fileKey, fileData);
 
-    return new Promise((resolve, reject) => {
-      uploadTicket.on(
-        "state_changed",
-        (snapshot) => {
-          console.log("uploading");
-        },
-        (error) => {
-          reject(error);
-        },
-        () => {
-          getDownloadURL(uploadTicket.snapshot.ref)
-            .then((downloadURL) => {
-              uploadedFileURLs.push(downloadURL);
-              resolve();
-            })
-            .catch((error) => {
-              reject(error);
-            });
-        }
-      );
+        // Create a retrievable local URL
+        const fileURL = `/local-storage/${fileKey}`;
+        uploadedFileURLs.push(fileURL);
+        resolve(fileURL);
+      };
+
+      reader.readAsDataURL(file);
     });
   };
 
@@ -181,7 +202,7 @@ const AddTicket = ({ open, setOpen, ticket }) => {
                 setSelected={setPriority}
               />
 
-              {/* <div className="w-full flex items-center justify-center mt-4">
+              <div className="w-full flex items-center justify-center mt-4">
                 <label
                   className="flex items-center gap-1 text-base text-ascent-2 hover:text-ascent-1 cursor-pointer my-4"
                   htmlFor="imgUpload"
@@ -197,7 +218,7 @@ const AddTicket = ({ open, setOpen, ticket }) => {
                   <BiImages />
                   <span>Add Assets</span>
                 </label>
-              </div> */}
+              </div>
             </div>
 
             <div className="py-6 sm:flex sm:flex-row-reverse gap-4">

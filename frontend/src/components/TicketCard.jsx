@@ -62,12 +62,12 @@ const TicketCard = ({ ticket }) => {
             {/* <div className="flex gap-1 items-center text-sm text-gray-600">
               <BiMessageAltDetail />
               <span>{ticket?.activities?.length}</span>
-            </div>
+            </div> */}
             <div className="flex gap-1 items-center text-sm text-gray-600 ">
               <MdAttachFile />
               <span>{ticket?.assets?.length}</span>
             </div>
-            <div className="flex gap-1 items-center text-sm text-gray-600 ">
+            {/* <div className="flex gap-1 items-center text-sm text-gray-600 ">
               <FaList />
               <span>0/{ticket?.subTickets?.length}</span>
             </div> */}

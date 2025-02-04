@@ -72,22 +72,22 @@ const Table = ({ tickets }) => {
         </span>
       </td>
 
-      {/* <td className="py-2">
+      <td className="py-2">
         <div className="flex items-center gap-3">
-          <div className="flex gap-1 items-center text-sm text-gray-600">
+          {/* <div className="flex gap-1 items-center text-sm text-gray-600">
             <BiMessageAltDetail />
             <span>{ticket?.activities?.length}</span>
-          </div>
+          </div> */}
           <div className="flex gap-1 items-center text-sm text-gray-600 dark:text-gray-400">
             <MdAttachFile />
             <span>{ticket?.assets?.length}</span>
           </div>
-          <div className="flex gap-1 items-center text-sm text-gray-600 dark:text-gray-400">
+          {/* <div className="flex gap-1 items-center text-sm text-gray-600 dark:text-gray-400">
             <FaList />
             <span>0/{ticket?.subTickets?.length}</span>
-          </div>
+          </div> */}
         </div>
-      </td> */}
+      </td>
 
       <td className="py-2">
         <div className="flex">

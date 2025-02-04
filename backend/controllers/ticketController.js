@@ -22,7 +22,7 @@ export const createTicket = async (req, res) => {
 
     res.status(200).json({
       status: true,
-      ticketId: result.id,
+      ticketId: result.insertId,
       message: "Ticket created successfully.",
     });
   } catch (error) {
@@ -30,6 +30,45 @@ export const createTicket = async (req, res) => {
     res.status(500).json({ status: false, message: "Failed to create ticket" });
   }
 };
+// export const createTicket = async (req, res) => {
+//   const connection = await dbConnection();
+//   await connection.beginTransaction(); // Start transaction
+
+//   try {
+//     const { title, priority, stage, assets, team } = req.body;
+
+//     // 1️⃣ Insert the ticket into `tickets` table
+//     const ticketQuery = `
+//       INSERT INTO tickets (title, priority, stage, assets)
+//       VALUES (?, ?, ?, ?)
+//     `;
+//     const [ticketResult] = await connection.execute(ticketQuery, [
+//       title,
+//       priority,
+//       stage,
+//       JSON.stringify(Array.isArray(assets) ? assets : [assets]),
+//     ]);
+//     const ticketId = ticketResult.insertId;
+//     if (team && team.length > 0) {
+//       const teamQuery = `
+//         INSERT INTO ticket_team (ticket_id, user_id) VALUES ?
+//       `;
+//       const teamValues = team.map((userId) => [ticketId, userId]);
+//       await connection.query(teamQuery, [teamValues]);
+//     }
+
+//     await connection.commit();
+//     res.status(200).json({
+//       status: true,
+//       ticketId,
+//       message: "Ticket created successfully.",
+//     });
+//   } catch (error) {
+//     await connection.rollback();
+//     console.error("Error creating ticket:", error.message);
+//     res.status(500).json({ status: false, message: "Failed to create ticket" });
+//   }
+// };
 
 // Create a new subTicket
 export const createSubTicket = async (req, res) => {
