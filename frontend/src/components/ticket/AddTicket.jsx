@@ -20,6 +20,7 @@ import {
 } from "../../redux/slices/api/ticketApiSlice";
 import { toast } from "sonner";
 import { dateFormatter } from "../../utils";
+import { useSelector } from "react-redux";
 
 const LISTS = ["TODO", "IN PROGRESS", "COMPLETED"];
 const PRIORIRY = ["HIGH", "MEDIUM", "NORMAL", "LOW"];
@@ -40,6 +41,8 @@ const AddTicket = ({ open, setOpen, ticket }) => {
     handleSubmit,
     formState: { errors },
   } = useForm({ defaultValues });
+
+  const { user } = useSelector((state) => state.auth);
 
   const [team, setTeam] = useState(ticket?.team || []);
   const [stage, setStage] = useState(ticket?.stage?.toUpperCase() || LISTS[0]);
@@ -76,7 +79,11 @@ const AddTicket = ({ open, setOpen, ticket }) => {
       };
 
       const res = ticket?.id
-        ? await updateTicket({ ...newData, id: ticket.id })
+        ? await updateTicket({
+            ...newData,
+            id: ticket.id,
+            updated_by: user?.name,
+          })
         : await createTicket(newData).unwrap();
 
       toast.success(res?.message);
@@ -216,7 +223,11 @@ const AddTicket = ({ open, setOpen, ticket }) => {
                     multiple={true}
                   />
                   <BiImages />
-                  <span>Add Assets</span>
+                  <span>
+                    {assets.length > 0
+                      ? `${assets.length} file(s) selected`
+                      : "Add Assets"}
+                  </span>
                 </label>
               </div>
             </div>

@@ -18,7 +18,7 @@ export const registerUser = async (req, res) => {
       name: name || null,
       email: email || null,
       password: password || null,
-      isAdmin: isAdmin ?? false,
+      isAdmin: isAdmin ?? true,
       role: role || null,
       title: title || null,
     });

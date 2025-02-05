@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { FaList } from "react-icons/fa";
-import { MdGridView } from "react-icons/md";
+import { MdGridView, MdOutlineSearch } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import Loading from "../components/Loader";
 import Title from "../components/Title";
@@ -8,7 +8,6 @@ import Button from "../components/Button";
 import { IoMdAdd } from "react-icons/io";
 import Tabs from "../components/Tabs";
 import BoardView from "../components/BoardView";
-import { tickets } from "../assets/data";
 import TicketTitle from "../components/TicketTitle";
 import Table from "../components/ticket/Table";
 import AddTicket from "../components/ticket/AddTicket";
@@ -30,6 +29,7 @@ const Tickets = () => {
 
   const [selected, setSelected] = useState(0);
   const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
 
   const status = params?.status || "";
 
@@ -38,6 +38,15 @@ const Tickets = () => {
     isTrashed: "",
     search: "",
   });
+
+  const filteredTickets = useMemo(() => {
+    if (!data?.tickets) return [];
+    return data.tickets.filter(
+      (ticket) =>
+        ticket.title.toLowerCase().includes(search.toLowerCase()) ||
+        ticket.id.toString().includes(search)
+    );
+  }, [data, search]);
 
   return isLoading ? (
     <div className="py-10">
@@ -48,14 +57,27 @@ const Tickets = () => {
       <div className="flex items-center justify-between mb-4">
         <Title title={status ? `${status} Tickets` : "Tickets"} />
 
-        {!status && (
-          <Button
-            onClick={() => setOpen(true)}
-            label="Create Ticket"
-            icon={<IoMdAdd className="text-lg" />}
-            className="flex flex-row-reverse gap-1 items-center bg-blue-600 text-white rounded-md py-2 2xl:py-2.5"
-          />
-        )}
+        <div className="flex items-center gap-4">
+          <div className="w-64 2xl:w-[400px] flex items-center py-2 px-3 gap-2 rounded-full bg-[#f3f4f6] border">
+            <MdOutlineSearch className="text-gray-500 text-xl" />
+            <input
+              type="text"
+              placeholder="Search...."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="flex-1 outline-none bg-transparent placeholder:text-gray-500 text-gray-800"
+            />
+          </div>
+
+          {!status && (
+            <Button
+              onClick={() => setOpen(true)}
+              label="Create Ticket"
+              icon={<IoMdAdd className="text-lg" />}
+              className="flex flex-row-reverse gap-1 items-center bg-blue-600 text-white rounded-md py-2 2xl:py-2.5"
+            />
+          )}
+        </div>
       </div>
 
       <Tabs tabs={TABS} setSelected={setSelected}>
@@ -71,10 +93,10 @@ const Tickets = () => {
         )}
 
         {selected !== 1 ? (
-          <BoardView tickets={data.tickets} />
+          <BoardView tickets={filteredTickets} />
         ) : (
           <div className="w-full">
-            <Table tickets={data.tickets} />
+            <Table tickets={filteredTickets} />
           </div>
         )}
       </Tabs>

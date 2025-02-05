@@ -2,73 +2,44 @@ import { dbConnection } from "../utils/index.js";
 
 // Create a new ticket
 export const createTicket = async (req, res) => {
+  const connection = await dbConnection();
+  await connection.beginTransaction();
+
   try {
     const { title, priority, stage, assets, team } = req.body;
-    const connection = await dbConnection();
 
-    const query = `
-      INSERT INTO tickets (title, priority, stage, assets, team)
-      VALUES (?, ?, ?, ?, ?)
+    const ticketQuery = `
+      INSERT INTO tickets (title, priority, stage, assets)
+      VALUES (?, ?, ?, ?)
     `;
-    const values = [
+    const [ticketResult] = await connection.execute(ticketQuery, [
       title,
       priority,
       stage,
-      JSON.stringify(assets || []),
-      JSON.stringify(team || []),
-    ];
+      JSON.stringify(Array.isArray(assets) ? assets : [assets]),
+    ]);
 
-    const [result] = await connection.execute(query, values);
+    const ticketId = ticketResult.insertId;
+    if (team && team.length > 0) {
+      const teamQuery = `
+        INSERT INTO ticket_team (ticket_id, user_id) VALUES ?
+      `;
+      const teamValues = team.map((userId) => [ticketId, userId]);
+      await connection.query(teamQuery, [teamValues]);
+    }
 
+    await connection.commit();
     res.status(200).json({
       status: true,
-      ticketId: result.insertId,
+      ticketId,
       message: "Ticket created successfully.",
     });
   } catch (error) {
+    await connection.rollback();
     console.error("Error creating ticket:", error.message);
     res.status(500).json({ status: false, message: "Failed to create ticket" });
   }
 };
-// export const createTicket = async (req, res) => {
-//   const connection = await dbConnection();
-//   await connection.beginTransaction(); // Start transaction
-
-//   try {
-//     const { title, priority, stage, assets, team } = req.body;
-
-//     // 1️⃣ Insert the ticket into `tickets` table
-//     const ticketQuery = `
-//       INSERT INTO tickets (title, priority, stage, assets)
-//       VALUES (?, ?, ?, ?)
-//     `;
-//     const [ticketResult] = await connection.execute(ticketQuery, [
-//       title,
-//       priority,
-//       stage,
-//       JSON.stringify(Array.isArray(assets) ? assets : [assets]),
-//     ]);
-//     const ticketId = ticketResult.insertId;
-//     if (team && team.length > 0) {
-//       const teamQuery = `
-//         INSERT INTO ticket_team (ticket_id, user_id) VALUES ?
-//       `;
-//       const teamValues = team.map((userId) => [ticketId, userId]);
-//       await connection.query(teamQuery, [teamValues]);
-//     }
-
-//     await connection.commit();
-//     res.status(200).json({
-//       status: true,
-//       ticketId,
-//       message: "Ticket created successfully.",
-//     });
-//   } catch (error) {
-//     await connection.rollback();
-//     console.error("Error creating ticket:", error.message);
-//     res.status(500).json({ status: false, message: "Failed to create ticket" });
-//   }
-// };
 
 // Create a new subTicket
 export const createSubTicket = async (req, res) => {
@@ -134,13 +105,26 @@ export const duplicateTicket = async (req, res) => {
   }
 };
 
-// Get all tickets
 export const getAllTickets = async (req, res) => {
   try {
     const connection = await dbConnection();
+
     const [tickets] = await connection.execute(
       "SELECT * FROM tickets WHERE isTrashed = FALSE"
     );
+
+    for (const ticket of tickets) {
+      const [teamMembers] = await connection.execute(
+        `SELECT u.id, u.name, u.title, u.role, u.email
+         FROM ticket_team tt
+         JOIN users u ON tt.user_id = u.id
+         WHERE tt.ticket_id = ?`,
+        [ticket.id]
+      );
+
+      ticket.team = teamMembers;
+    }
+
     res.status(200).json({ status: true, tickets });
   } catch (error) {
     console.error("Error fetching tickets:", error.message);
@@ -154,51 +138,120 @@ export const getTicket = async (req, res) => {
     const { id } = req.params;
     const connection = await dbConnection();
 
-    const [ticket] = await connection.execute(
+    const [ticketResult] = await connection.execute(
       "SELECT * FROM tickets WHERE id = ?",
       [id]
     );
 
-    if (ticket.length === 0) {
+    if (ticketResult.length === 0) {
       return res
         .status(404)
         .json({ status: false, message: "Ticket not found." });
     }
 
-    res.status(200).json({ status: true, ticket: ticket[0] });
+    const ticket = ticketResult[0];
+
+    const [teamMembers] = await connection.execute(
+      `SELECT u.id, u.name, u.title, u.role, u.email
+       FROM ticket_team tt
+       JOIN users u ON tt.user_id = u.id
+       WHERE tt.ticket_id = ?`,
+      [id]
+    );
+
+    ticket.team = teamMembers;
+
+    res.status(200).json({ status: true, ticket });
   } catch (error) {
     console.error("Error fetching ticket:", error.message);
     res.status(500).json({ status: false, message: "Failed to fetch ticket" });
   }
 };
 
-// Update a ticket
+// Update Ticket
 export const updateTicket = async (req, res) => {
+  const connection = await dbConnection();
+  await connection.beginTransaction();
+
   try {
     const { id } = req.params;
-    const { title, priority, stage, assets, team } = req.body;
-    const connection = await dbConnection();
+    const { title, priority, stage, assets, team, updated_by } = req.body;
 
-    const query = `
+    const [existingTicket] = await connection.execute(
+      "SELECT * FROM tickets WHERE id = ?",
+      [id]
+    );
+
+    if (existingTicket.length === 0) {
+      return res
+        .status(404)
+        .json({ status: false, message: "Ticket not found." });
+    }
+
+    const prevTicket = existingTicket[0];
+    let changes = [];
+
+    if (prevTicket.title.trim() !== title.trim()) {
+      changes.push(`Title changed from '${prevTicket.title}' to '${title}'`);
+    }
+    if (prevTicket.stage.toLowerCase().trim() !== stage.toLowerCase().trim()) {
+      changes.push(`Stage changed from '${prevTicket.stage}' to '${stage}'`);
+    }
+    if (
+      prevTicket.priority.toLowerCase().trim() !== priority.toLowerCase().trim()
+    ) {
+      changes.push(
+        `Priority changed from '${prevTicket.priority}' to '${priority}'`
+      );
+    }
+    if (JSON.stringify(prevTicket.assets) !== JSON.stringify(assets)) {
+      changes.push(`Assets updated`);
+    }
+
+    const description =
+      changes.length > 0 ? changes.join(", ") : prevTicket.description;
+
+    const updateQuery = `
       UPDATE tickets
-      SET title = ?, priority = ?, stage = ?, assets = ?, team = ?
+      SET title = ?, priority = ?, stage = ?, assets = ?, description = ?, updated_by = ?
       WHERE id = ?
     `;
-    const values = [
+
+    const updateValues = [
       title,
       priority,
       stage,
       JSON.stringify(assets || []),
-      JSON.stringify(team || []),
+      description,
+      updated_by,
       id,
     ];
 
-    await connection.execute(query, values);
+    await connection.execute(updateQuery, updateValues);
 
+    if (Array.isArray(team)) {
+      const teamIds = team
+        .map((member) => (typeof member === "object" ? member.id : member))
+        .filter(Number);
+
+      await connection.execute(`DELETE FROM ticket_team WHERE ticket_id = ?`, [
+        id,
+      ]);
+
+      if (teamIds.length > 0) {
+        const teamQuery = `INSERT INTO ticket_team (ticket_id, user_id) VALUES ?`;
+        const teamValues = teamIds.map((userId) => [id, userId]);
+        await connection.query(teamQuery, [teamValues]);
+        changes.push("Team updated");
+      }
+    }
+
+    await connection.commit();
     res
       .status(200)
       .json({ status: true, message: "Ticket updated successfully." });
   } catch (error) {
+    await connection.rollback();
     console.error("Error updating ticket:", error.message);
     res.status(500).json({ status: false, message: "Failed to update ticket" });
   }
@@ -260,27 +313,57 @@ export const dashboardStatistics = async (req, res) => {
   try {
     const connection = await dbConnection();
 
+    // Fetch all tickets
     const [allTickets] = await connection.execute(
       "SELECT * FROM tickets WHERE isTrashed = FALSE"
     );
 
+    // Fetch tickets grouped by stage
     const [groupedTickets] = await connection.execute(
       "SELECT stage, COUNT(*) AS count FROM tickets WHERE isTrashed = FALSE GROUP BY stage"
     );
 
+    // Fetch tickets grouped by priority
     const [groupedPriority] = await connection.execute(
       "SELECT priority, COUNT(*) AS count FROM tickets WHERE isTrashed = FALSE GROUP BY priority"
     );
 
-    const [recentTickets] = await connection.execute(
+    // Fetch latest 10 ticket history
+    const [history] = await connection.execute(
       "SELECT * FROM tickets WHERE isTrashed = FALSE ORDER BY id DESC LIMIT 10"
     );
 
+    // Fetch team members for all active tickets
+    const [teamData] = await connection.execute(
+      `SELECT tt.ticket_id, u.id AS user_id, u.name, u.title, u.role, u.email
+       FROM ticket_team tt
+       JOIN users u ON tt.user_id = u.id
+       WHERE tt.ticket_id IN (SELECT id FROM tickets WHERE isTrashed = FALSE)`
+    );
+
+    // Organize team members by ticket ID
+    const teamMap = {};
+    teamData.forEach(({ ticket_id, ...user }) => {
+      if (!teamMap[ticket_id]) {
+        teamMap[ticket_id] = [];
+      }
+      teamMap[ticket_id].push(user);
+    });
+
+    // Attach team data to tickets
+    const ticketsWithTeams = allTickets.map((ticket) => ({
+      ...ticket,
+      team: teamMap[ticket.id] || [], // Attach team members, default empty array
+    }));
+
     const summary = {
-      totalTickets: allTickets.length,
+      totalTickets: ticketsWithTeams.length,
       groupedByStage: groupedTickets,
       groupedByPriority: groupedPriority,
-      recentTickets,
+      history: history.map((ticket) => ({
+        ...ticket,
+        team: teamMap[ticket.id] || [], // Attach team members to history
+      })),
     };
 
     res

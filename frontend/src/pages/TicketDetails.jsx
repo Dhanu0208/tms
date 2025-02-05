@@ -9,12 +9,9 @@ import {
   MdKeyboardDoubleArrowUp,
   MdOutlineDoneAll,
   MdOutlineMessage,
-  MdTaskAlt,
 } from "react-icons/md";
-import { RxActivityLog } from "react-icons/rx";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
-import { tickets } from "../assets/data";
 import Tabs from "../components/Tabs";
 import { PRIOTITYSTYELS, TICKET_TYPE, getInitials } from "../utils";
 import Loading from "../components/Loader";
@@ -42,7 +39,7 @@ const bgColor = {
 
 const TABS = [
   { title: "Ticket Detail", icon: <FaTasks /> },
-  { title: "Activities/Timeline", icon: <RxActivityLog /> },
+  // { title: "Activities/Timeline", icon: <RxActivityLog /> },
 ];
 
 const TICKETTYPEICON = {
