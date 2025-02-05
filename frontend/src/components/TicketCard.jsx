@@ -14,6 +14,7 @@ import UserInfo from "./UserInfo";
 import { IoMdAdd } from "react-icons/io";
 import TicketDialog from "./ticket/TicketDialog";
 import AddSubTicket from "./ticket/AddSubTicket";
+import { useNavigate } from "react-router-dom";
 
 const ICONS = {
   high: <MdKeyboardDoubleArrowUp />,
@@ -25,9 +26,14 @@ const TicketCard = ({ ticket }) => {
   const { user } = useSelector((state) => state.auth);
   const [open, setOpen] = useState(false);
 
+  const navigate = useNavigate();
+
   return (
     <>
-      <div className="w-full h-fit bg-white shadow-md p-4 rounded">
+      <div
+        className="w-full h-fit bg-white shadow-md p-4 rounded cursor-pointer"
+        onClick={() => navigate(`/tickets/${ticket.id}`)}
+      >
         <div className="w-full flex justify-between">
           <div
             className={clsx(
@@ -87,10 +93,10 @@ const TicketCard = ({ ticket }) => {
             ))}
           </div>
         </div>
-        <div className="w-full border-b border-gray-200 my-2" />
+        {/* <div className="w-full border-b border-gray-200 my-2" /> */}
 
         {/* sub tickets */}
-        {ticket?.subTickets?.length > 0 ? (
+        {/* {ticket?.subTickets?.length > 0 ? (
           <div className="py-4">
             <h5 className="text-base line-clamp-1 text-black">
               {ticket?.subTickets[0].title}
@@ -111,9 +117,9 @@ const TicketCard = ({ ticket }) => {
               <span className="text-gray-500">No Sub Tickets</span>
             </div>
           </>
-        )}
+        )} */}
 
-        <div className="w-full pb-2">
+        {/* <div className="w-full pb-2">
           <button
             onClick={() => setOpen(true)}
             disabled={user.isAdmin ? false : true}
@@ -122,7 +128,7 @@ const TicketCard = ({ ticket }) => {
             <IoMdAdd className="text-lg" />
             <span>ADD SUBTICKETS</span>
           </button>
-        </div>
+        </div> */}
       </div>
 
       <AddSubTicket open={open} setOpen={setOpen} id={ticket.id} />

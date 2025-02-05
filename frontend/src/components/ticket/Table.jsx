@@ -36,7 +36,7 @@ const Table = ({ tickets }) => {
         <th className="py-2">Ticket Title</th>
         <th className="py-2">Priority</th>
         <th className="py-2 line-clamp-1">Created At</th>
-        {/* <th className="py-2">Assets</th> */}
+        <th className="py-2">Assets</th>
         <th className="py-2">Users</th>
       </tr>
     </thead>
@@ -93,7 +93,7 @@ const Table = ({ tickets }) => {
         <div className="flex">
           {ticket?.team?.map((m, index) => (
             <div
-              key={m.id}
+              key={m?.id}
               className={clsx(
                 "w-7 h-7 rounded-full text-white flex items-center justify-center text-sm -mr-1",
                 BGS[index % BGS?.length]

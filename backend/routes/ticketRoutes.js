@@ -29,7 +29,7 @@ router.post(
   isAdminRoute,
   createSubTicket
 );
-router.put("/update/:id", protectRoute, isAdminRoute, updateTicket);
+router.put("/update/:id", protectRoute, updateTicket);
 router.put("/:id", protectRoute, isAdminRoute, trashTicket);
 
 router.delete(
